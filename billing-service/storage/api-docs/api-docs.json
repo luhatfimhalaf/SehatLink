@@ -1,0 +1,180 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Billing Service API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/billings": {
+            "get": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "List all billings",
+                "operationId": "1864f17d4bfb17790bc634906382c10a",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "Create a new billing",
+                "operationId": "2eabc6f4e04dba77d5deeffb1c27e606",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "patient_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "appointment_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "example": 100
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "unpaid"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Consultation fee"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Billing created"
+                    }
+                }
+            }
+        },
+        "/api/billings/{id}": {
+            "get": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "Get billing by ID",
+                "operationId": "71c97466f48237e62bf8999f58e7d8fd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Billing not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "Update a billing",
+                "operationId": "d906a4ec9054c983e31da2eb61a95c56",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "patient_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "appointment_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "amount": {
+                                        "type": "number",
+                                        "example": 100
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "paid"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Consultation fee"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Billing updated"
+                    },
+                    "404": {
+                        "description": "Billing not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Billings"
+                ],
+                "summary": "Delete a billing",
+                "operationId": "a7845cd088ada6b0ab4222e0af2009fd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Billing deleted"
+                    },
+                    "404": {
+                        "description": "Billing not found"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Billings",
+            "description": "Billings"
+        }
+    ]
+}
