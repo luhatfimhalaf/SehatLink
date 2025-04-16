@@ -1,0 +1,182 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Medical Record Service API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/medical-records": {
+            "get": {
+                "tags": [
+                    "Medical Records"
+                ],
+                "summary": "List all medical records",
+                "operationId": "7bcb79a65528b66e3b2b074ce85e9948",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Medical Records"
+                ],
+                "summary": "Create a new medical record",
+                "operationId": "4a19a03361a56d92318a15496dc09c0b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "patient_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "diagnosis": {
+                                        "type": "string",
+                                        "example": "Flu"
+                                    },
+                                    "prescription": {
+                                        "type": "string",
+                                        "example": "Paracetamol"
+                                    },
+                                    "notes": {
+                                        "type": "string",
+                                        "example": "Rest for 2 days"
+                                    },
+                                    "visit_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-04-13"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Medical record created"
+                    }
+                }
+            }
+        },
+        "/api/medical-records/{id}": {
+            "get": {
+                "tags": [
+                    "Medical Records"
+                ],
+                "summary": "Get medical record by ID",
+                "operationId": "cb879ad00acd6d64cef10da1c36881d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Medical record not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Medical Records"
+                ],
+                "summary": "Update a medical record",
+                "operationId": "3879d1b482ed9488b07025d722541ccd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "patient_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "diagnosis": {
+                                        "type": "string",
+                                        "example": "Flu"
+                                    },
+                                    "prescription": {
+                                        "type": "string",
+                                        "example": "Paracetamol"
+                                    },
+                                    "notes": {
+                                        "type": "string",
+                                        "example": "Rest for 2 days"
+                                    },
+                                    "visit_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-04-13"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Medical record updated"
+                    },
+                    "404": {
+                        "description": "Medical record not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Medical Records"
+                ],
+                "summary": "Delete a medical record",
+                "operationId": "e134b51c60d080b119739661eca74e53",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Medical record deleted"
+                    },
+                    "404": {
+                        "description": "Medical record not found"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Medical Records",
+            "description": "Medical Records"
+        }
+    ]
+}
