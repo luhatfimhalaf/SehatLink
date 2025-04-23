@@ -85,6 +85,26 @@ class BillingController extends Controller
         $billing = Billing::findOrFail($id);
         return new BillingResource($billing);
     }
+
+    /**
+     * @OA\Put(
+     *     path="/api/billings/{id}",
+     *     summary="Update a billing",
+     *     tags={"Billings"},
+     *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+     *             @OA\Property(property="patient_id", type="integer", example=1),
+     *             @OA\Property(property="appointment_id", type="integer", example=1),
+     *             @OA\Property(property="amount", type="number", example=100.00),
+     *             @OA\Property(property="status", type="string", example="paid"),
+     *             @OA\Property(property="description", type="string", example="Consultation fee")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Billing updated"),
+     *     @OA\Response(response=404, description="Billing not found")
+     * )
+     */
     public function update(Request $request, $id)
     {
         $billing = Billing::findOrFail($id);
